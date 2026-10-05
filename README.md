@@ -26,9 +26,17 @@
 
 <!-- BEGIN data/catalog.snapshot.md -->
 
-_(Phase A: static snapshot. A future phase will auto-regenerate this block from `data/index.tsv` via a CI script.)_
+### ai (5)
 
-### Cloud (7)
+| Provider | Status page |
+| --- | --- |
+| anthropic | https://status.anthropic.com |
+| deepseek | https://status.deepseek.com |
+| gemini | https://status.gemini.google.com |
+| openai | https://status.openai.com |
+| qwen | https://status.alibabacloud.com |
+
+### cloud (7)
 
 | Provider | Status page |
 | --- | --- |
@@ -40,17 +48,7 @@ _(Phase A: static snapshot. A future phase will auto-regenerate this block from 
 | huawei-cloud | https://status.huaweicloud.com |
 | tencent-cloud | https://status.cloud.tencent.com |
 
-### AI (5)
-
-| Provider | Status page |
-| --- | --- |
-| anthropic | https://status.anthropic.com |
-| deepseek | https://status.deepseek.com |
-| gemini | https://status.gemini.google.com |
-| openai | https://status.openai.com |
-| qwen | https://status.alibabacloud.com |
-
-### Other (4)
+### other (4)
 
 | Provider | Status page |
 | --- | --- |
@@ -71,10 +69,8 @@ _(Phase A: static snapshot. A future phase will auto-regenerate this block from 
 
 | `api_type` | Count | Examples |
 | --- | ---: | --- |
-| `atlassian-statuspage` | 11 | github, gitlab, stripe, vercel, openai, anthropic, gemini, cloudflare, azure, tencent-cloud |
-| `custom-json` | 5 | aliyun, aws, gcp, huawei-cloud, deepseek, qwen |
-| `statuspal` | 0 | _(none yet)_ |
-| `rss` | 0 | _(none yet)_ |
+| `atlassian-statuspage` | 10 | anthropic, azure, cloudflare, gemini, github, gitlab, openai, stripe, tencent-cloud, vercel |
+| `custom-json` | 6 | aliyun, aws, deepseek, gcp, huawei-cloud, qwen |
 
 <!-- END data/api-type.snapshot.md -->
 
@@ -87,8 +83,8 @@ For a worked example of parsing each `api_type`, see
 
 | Region | Count |
 | --- | ---: |
-| `global` | 10 |
-| `cn` | 6 |
+| `cn` | 5 |
+| `global` | 11 |
 
 <!-- END data/region.snapshot.md -->
 

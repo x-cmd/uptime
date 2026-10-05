@@ -1,4 +1,4 @@
-name: regenerate-index-tsv
+name: regenerate-catalog-artifacts
 
 on:
   push:
@@ -6,12 +6,19 @@ on:
     paths:
       - 'data/index.yml'
       - '.x-cmd/build-index-tsv.py'
+      - '.x-cmd/build-catalog-report.py'
+      - 'README.md'
+      - 'README.cn.md'
+      - 'report/catalog.report.md'
   pull_request:
     branches: [main]
     paths:
       - 'data/index.yml'
       - '.x-cmd/build-index-tsv.py'
+      - '.x-cmd/build-catalog-report.py'
       - 'data/index.tsv'
+      - 'report/catalog.report.md'
+      - 'README.md'
   workflow_dispatch:
 
 permissions:
@@ -27,19 +34,27 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Validate schema
+      - name: Validate index.tsv freshness
         run: python3 .x-cmd/build-index-tsv.py --check
 
-      - name: Regenerate data/index.tsv on push to main
+      - name: Validate catalog report + README injection freshness
+        run: python3 .x-cmd/build-catalog-report.py --check
+
+      - name: Regenerate on push to main
         if: github.event_name == 'push'
         run: |
+          set -euo pipefail
+
           python3 .x-cmd/build-index-tsv.py
-          if git diff --quiet data/index.tsv; then
-            echo "index.tsv is up to date"
+          python3 .x-cmd/build-catalog-report.py
+
+          if git diff --quiet data/index.tsv report/catalog.report.md README.md; then
+            echo "all artifacts up to date"
             exit 0
           fi
+
           git config user.name "x-cmd-bot"
           git config user.email "bot@x-cmd.com"
-          git add data/index.tsv
-          git commit -m "chore(data): regenerate index.tsv from index.yml"
+          git add data/index.tsv report/catalog.report.md README.md
+          git commit -m "chore(data): regenerate catalog artifacts from index.yml"
           git push
