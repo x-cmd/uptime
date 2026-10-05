@@ -1,0 +1,121 @@
+id: x-uptime-2-the-catalog
+
+data:
+  - name:
+      en: "schema"
+      cn: "schema"
+    qa:
+      - id: what-are-the-tsv-columns
+        question:
+          en: "What are the 7 columns in `data/index.tsv`?"
+          cn: "`data/index.tsv` 的 7 列分别是什么?"
+        answer:
+          en: "name, category, homepage, statuspage, api_type, api_url, region. Rows are sorted by (category, name), both case-insensitive ascending. The header is on line 1; skip it with `awk -F'\\t' 'NR > 1'`."
+          cn: "name、category、homepage、statuspage、api_type、api_url、region。按 (category, name) 升序排序,均不区分大小写。表头在第 1 行,用 `awk -F'\\t' 'NR > 1'` 跳过。"
+        confidence: 9
+        reference:
+          - docs/2-the-catalog/2-the-catalog.en.md
+          - SKILL.md
+
+      - id: required-vs-optional-fields
+        question:
+          en: "Which fields are required, and which are optional?"
+          cn: "哪些字段必填,哪些可选?"
+        answer:
+          en: "Required: name, homepage, statuspage, api_type, api_url. Optional: region. CI rejects any entry missing a required field; the error names the file and the field. The `region` field accepts empty values for vendors that span both `cn` and `global`."
+          cn: "必填:name、homepage、statuspage、api_type、api_url。可选:region。CI 拒绝任何缺必填字段的条目,错误信息指出文件和字段。`region` 对跨 cn/global 的厂商允许留空。"
+        confidence: 9
+        reference:
+          - docs/2-the-catalog/2-the-catalog.en.md
+          - .x-cmd/build-index-tsv.py
+
+      - id: can-i-edit-index-tsv-by-hand
+        question:
+          en: "Can I edit `data/index.tsv` by hand?"
+          cn: "可以直接手改 `data/index.tsv` 吗?"
+        answer:
+          en: "No. CI regenerates it from `data/index.yml` on every push. Manual edits are silently overwritten. The build script's `--check` flag also fails any PR that ships a stale `index.tsv`. Always edit `index.yml`."
+          cn: "不行。CI 每次 push 都会从 `data/index.yml` 重新生成。手改会被静默覆盖。生成脚本的 `--check` 也会让任何带过期 `index.tsv` 的 PR 失败。请编辑 `index.yml`。"
+        confidence: 9
+        reference:
+          - .github/workflows/index-tsv.yml
+          - CONTRIBUTING.md
+
+  - name:
+      en: "api_type"
+      cn: "api_type"
+    qa:
+      - id: what-api-type-values-exist
+        question:
+          en: "What values does `api_type` accept, and when do I use each?"
+          cn: "`api_type` 接受哪些值,各用于什么场景?"
+        answer:
+          en: "Four values: `atlassian-statuspage` (hosted on Statuspage.io / Atlassian Statuspage, JSON at `<host>/api/v2/summary.json`), `custom-json` (vendor's bespoke endpoint, e.g. AWS / GCP / Aliyun), `statuspal` (hosted on statuspal.com), `rss` (vendor publishes only a feed). Pick the one that matches the actual response shape — the live-panel parser is keyed off this."
+          cn: "四个值:`atlassian-statuspage`(托管在 Statuspage.io / Atlassian Statuspage,JSON 在 `<host>/api/v2/summary.json`)、`custom-json`(厂商自定义接口,如 AWS / GCP / Aliyun)、`statuspal`(托管在 statuspal.com)、`rss`(厂商只发布 feed)。按实际响应形状选 —— 实时面板 parser 按此路由。"
+        confidence: 9
+        reference:
+          - docs/2-the-catalog/2-the-catalog.en.md
+
+      - id: how-do-i-add-a-new-api-type
+        question:
+          en: "What if a vendor doesn't fit any of the 4 `api_type` values?"
+          cn: "如果厂商不符合 4 个 `api_type` 之一,怎么办?"
+        answer:
+          en: "Add a new value and describe the normalization needed in the PR. The live panel's parser table is the contract that has to grow alongside the catalog. Until the parser supports the new value, mark the entry's `api_type` as `custom-json` and link the response-shape spec in the PR description."
+          cn: "新增一个值并在 PR 里描述所需的归一化逻辑。实时面板 parser 表需要随目录一起增长。在 parser 支持新值之前,把条目标为 `custom-json` 并在 PR 描述里附上响应形状规范。"
+        confidence: 8
+        reference:
+          - docs/2-the-catalog/2-the-catalog.en.md
+
+  - name:
+      en: "queries and regions"
+      cn: "查询与 region"
+    qa:
+      - id: region-values
+        question:
+          en: "What values does `region` accept, and how is it used?"
+          cn: "`region` 接受哪些值,怎么用?"
+        answer:
+          en: "Today: `cn` for mainland-China vendors, `global` for everywhere else, empty for cross-region vendors. The live panel at x-cmd.com/uptime will expose a region toggle that filters by this column. Vendors with separate status pages per region should pick one canonical surface (preferred) rather than listing twice."
+          cn: "目前:`cn` 大陆厂商,`global` 其他,留空给跨区域厂商。x-cmd.com/uptime 的实时面板会暴露 region 开关按此列过滤。一个厂商每个 region 各一个状态页时,应选一个规范面(推荐),而不是列两次。"
+        confidence: 9
+        reference:
+          - docs/2-the-catalog/2-the-catalog.en.md
+
+      - id: where-do-i-check-vendor-x
+        question:
+          en: "How do I find the canonical status page URL for a vendor?"
+          cn: "怎么查某个厂商的状态页规范 URL?"
+        answer:
+          en: "Fetch the TSV and filter on column 1: `curl -fsSL https://raw.githubusercontent.com/x-cmd/uptime/main/data/index.tsv | awk -F'\\t' '$1 == \"<name>\" { print $4 }'`. The 4th column is `statuspage` — the human-readable URL."
+          cn: "拉 TSV 然后按第 1 列过滤:`curl -fsSL https://raw.githubusercontent.com/x-cmd/uptime/main/data/index.tsv | awk -F'\\t' '$1 == \"<name>\" { print $4 }'`。第 4 列 `statuspage` 是人读 URL。"
+        confidence: 9
+        reference:
+          - docs/2-the-catalog/2-the-catalog.en.md
+
+  - name:
+      en: "contributing"
+      cn: "贡献"
+    qa:
+      - id: how-to-add-a-provider-pr
+        question:
+          en: "How do I submit a PR that adds a provider?"
+          cn: "如何提交添加 provider 的 PR?"
+        answer:
+          en: "Edit `data/index.yml`, append one entry under the right category with all required fields, open a PR. CI validates schema, regenerates `data/index.tsv`, and auto-commits. Include in the PR body: provider name, category, api_type, statuspage URL (verified in browser), api_url (verified by curl)."
+          cn: "编辑 `data/index.yml`,在对应分类下追加一条含全部必填字段的条目,开 PR。CI 校验 schema、重新生成 `data/index.tsv`、自动提交。PR 正文请附:provider 名、分类、api_type、statuspage URL(浏览器验证)、api_url(curl 验证)。"
+        confidence: 9
+        reference:
+          - CONTRIBUTING.md
+          - docs/2-the-catalog/2-the-catalog.en.md
+
+      - id: what-happens-to-stale-urls
+        question:
+          en: "What happens if a vendor's `api_url` changes?"
+          cn: "如果厂商改了 `api_url`,会发生什么?"
+        answer:
+          en: "The live panel will probe the old URL, get a non-2xx, and the card will turn red and stay red until someone updates `data/index.yml`. The fix is one line in `index.yml` and one PR."
+          cn: "实时面板会探测旧 URL、得到非 2xx,该卡片会变红并保持红,直到有人更新 `data/index.yml`。修法是 `index.yml` 一行 + 一个 PR。"
+        confidence: 9
+        reference:
+          - docs/2-the-catalog/2-the-catalog.en.md

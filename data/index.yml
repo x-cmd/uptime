@@ -1,0 +1,120 @@
+# data/index.yml — curated catalog of provider status pages.
+#
+# Schema:
+#   Top-level keys = categories (cloud, ai, other, ...)
+#   Each value = a list of providers in that category
+#   Each provider has:
+#     name        (required) — slug-style display name, lowercase
+#     homepage    (required) — vendor's main website
+#     statuspage  (required) — vendor's public human-readable status page
+#     api_type    (required) — atlassian-statuspage | custom-json | statuspal | rss
+#     api_url     (required) — machine-readable status JSON endpoint
+#     region      (optional) — cn | global; used by future x-cmd.com/uptime filters
+#
+# To add a provider, append one entry under the right category and open a PR.
+# CI runs .x-cmd/build-index-tsv.py to regenerate data/index.tsv.
+#
+# api_urls are best-effort — if you find one has changed, please update it
+# (or open an issue).
+
+cloud:
+  - name: aliyun
+    homepage: https://www.aliyun.com
+    statuspage: https://status.aliyun.com
+    api_type: custom-json
+    api_url: https://status.aliyun.com/api/v1/status
+    region: cn
+  - name: tencent-cloud
+    homepage: https://cloud.tencent.com
+    statuspage: https://status.cloud.tencent.com
+    api_type: atlassian-statuspage
+    api_url: https://status.cloud.tencent.com/api/v2/summary.json
+    region: cn
+  - name: huawei-cloud
+    homepage: https://www.huaweicloud.com
+    statuspage: https://status.huaweicloud.com
+    api_type: custom-json
+    api_url: https://status.huaweicloud.com/api/v1/status
+    region: cn
+  - name: aws
+    homepage: https://aws.amazon.com
+    statuspage: https://health.aws.amazon.com
+    api_type: custom-json
+    api_url: https://health.aws.amazon.com/public/currentevent
+    region: global
+  - name: gcp
+    homepage: https://cloud.google.com
+    statuspage: https://status.cloud.google.com
+    api_type: custom-json
+    api_url: https://status.cloud.google.com/incidents.json
+    region: global
+  - name: azure
+    homepage: https://azure.microsoft.com
+    statuspage: https://status.azure.com
+    api_type: atlassian-statuspage
+    api_url: https://status.azure.com/api/v2/summary.json
+    region: global
+  - name: cloudflare
+    homepage: https://www.cloudflare.com
+    statuspage: https://www.cloudflarestatus.com
+    api_type: atlassian-statuspage
+    api_url: https://www.cloudflarestatus.com/api/v2/summary.json
+    region: global
+
+ai:
+  - name: openai
+    homepage: https://openai.com
+    statuspage: https://status.openai.com
+    api_type: atlassian-statuspage
+    api_url: https://status.openai.com/api/v2/summary.json
+    region: global
+  - name: anthropic
+    homepage: https://anthropic.com
+    statuspage: https://status.anthropic.com
+    api_type: atlassian-statuspage
+    api_url: https://status.anthropic.com/api/v2/summary.json
+    region: global
+  - name: gemini
+    homepage: https://gemini.google.com
+    statuspage: https://status.gemini.google.com
+    api_type: atlassian-statuspage
+    api_url: https://status.gemini.google.com/api/v2/summary.json
+    region: global
+  - name: deepseek
+    homepage: https://www.deepseek.com
+    statuspage: https://status.deepseek.com
+    api_type: custom-json
+    api_url: https://status.deepseek.com/api/v1/status
+    region: cn
+  - name: qwen
+    homepage: https://qwen.alibaba.com
+    statuspage: https://status.alibabacloud.com
+    api_type: custom-json
+    api_url: https://status.alibabacloud.com/api/v1/status
+    region: cn
+
+other:
+  - name: github
+    homepage: https://github.com
+    statuspage: https://www.githubstatus.com
+    api_type: atlassian-statuspage
+    api_url: https://www.githubstatus.com/api/v2/summary.json
+    region: global
+  - name: gitlab
+    homepage: https://gitlab.com
+    statuspage: https://status.gitlab.com
+    api_type: atlassian-statuspage
+    api_url: https://status.gitlab.com/api/v2/summary.json
+    region: global
+  - name: vercel
+    homepage: https://vercel.com
+    statuspage: https://www.vercel-status.com
+    api_type: atlassian-statuspage
+    api_url: https://www.vercel-status.com/api/v2/summary.json
+    region: global
+  - name: stripe
+    homepage: https://stripe.com
+    statuspage: https://status.stripe.com
+    api_type: atlassian-statuspage
+    api_url: https://status.stripe.com/api/v2/summary.json
+    region: global

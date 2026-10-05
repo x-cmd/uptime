@@ -1,0 +1,114 @@
+id: x-uptime-1-uptime-content
+
+data:
+  - name:
+      en: "local uptime"
+      cn: "本地 uptime"
+    qa:
+      - id: what-does-uptime-1-print
+        question:
+          en: "What does the standard `uptime(1)` command print?"
+          cn: "标准 `uptime(1)` 命令输出什么?"
+        answer:
+          en: "Three things: how long the system has been running (in `dd:hh:mm` form), how many users are logged in, and the load average over the last 1, 5, and 15 minutes. The man page is at https://man.x-cmd.com/man1/uptime."
+          cn: "三件事:系统已运行时长(`dd:hh:mm` 形式)、当前登录用户数、以及过去 1/5/15 分钟的负载平均。手册页:https://man.x-cmd.com/man1/uptime 。"
+        confidence: 9
+        reference:
+          - docs/1-uptime-content/1-uptime-content.en.md
+
+      - id: how-does-x-uptime-differ
+        question:
+          en: "How is `x uptime` different from `uptime(1)`?"
+          cn: "`x uptime` 与 `uptime(1)` 有什么区别?"
+        answer:
+          en: "`x uptime` is the x-cmd wrapper. It adds formatting options (`--pretty`), machine-readable output (`--json`), and (planned) the ability to overlay provider status from this repo's `data/index.tsv`. See https://x-cmd.com/mod/uptime."
+          cn: "`x uptime` 是 x-cmd 的封装,新增了格式化选项(`--pretty`)、机器可读输出(`--json`),以及(规划中)从本仓 `data/index.tsv` 叠加 provider 状态的能力。见 https://x-cmd.com/mod/uptime 。"
+        confidence: 9
+        reference:
+          - docs/1-uptime-content/1-uptime-content.en.md
+
+  - name:
+      en: "the catalog"
+      cn: "目录"
+    qa:
+      - id: what-is-in-data-index-yml
+        question:
+          en: "What is in `data/index.yml` and how is `data/index.tsv` related?"
+          cn: "`data/index.yml` 是什么?与 `data/index.tsv` 什么关系?"
+        answer:
+          en: "`data/index.yml` is the hand-curated source of truth — one entry per provider, grouped by category (`cloud`, `ai`, `other`). `data/index.tsv` is auto-generated from it on every push via `.github/workflows/index-tsv.yml`. Always edit `index.yml`; never hand-edit `index.tsv`."
+          cn: "`data/index.yml` 是人工策展的源 —— 一条一个 provider,按分类(`cloud`、`ai`、`other`)分组。`data/index.tsv` 每次 push 时由 `.github/workflows/index-tsv.yml` 自动生成。请编辑 `index.yml`,不要手改 `index.tsv`。"
+        confidence: 9
+        reference:
+          - data/index.yml
+          - .github/workflows/index-tsv.yml
+
+      - id: tsv-schema
+        question:
+          en: "What are the columns in `data/index.tsv`?"
+          cn: "`data/index.tsv` 包含哪些列?"
+        answer:
+          en: "Seven columns, tab-separated: `name`, `category`, `homepage`, `statuspage`, `api_type`, `api_url`, `region`. Rows are sorted by `(category, name)`, both case-insensitive ascending. The full schema is documented in `SKILL.md`."
+          cn: "七列制表符分隔:`name`、`category`、`homepage`、`statuspage`、`api_type`、`api_url`、`region`。按 `(category, name)` 排序,均不区分大小写升序。完整 schema 见 `SKILL.md`。"
+        confidence: 9
+        reference:
+          - SKILL.md
+
+      - id: how-to-add-a-provider
+        question:
+          en: "How do I add a new provider to the catalog?"
+          cn: "如何在目录中添加新的 provider?"
+        answer:
+          en: "Edit `data/index.yml` and append one entry under the right category with the required fields (`name`, `homepage`, `statuspage`, `api_type`, `api_url`). Open a PR. CI validates the schema, regenerates `data/index.tsv`, and auto-commits it. See `CONTRIBUTING.md`."
+          cn: "编辑 `data/index.yml`,在对应分类下追加一条含必填字段(`name`、`homepage`、`statuspage`、`api_type`、`api_url`)的条目,开 PR。CI 会校验 schema、重新生成 `data/index.tsv` 并自动提交。见 `CONTRIBUTING.md`。"
+        confidence: 9
+        reference:
+          - CONTRIBUTING.md
+
+      - id: live-panel-where
+        question:
+          en: "Where will the live status panel live?"
+          cn: "实时状态面板将放在哪里?"
+        answer:
+          en: "At https://x-cmd.com/uptime. It will render red / yellow / green lights for every provider in `data/index.tsv`, with search and a card layout. The data source is a future `status-live.json` produced by a GitHub Action in this repo."
+          cn: "在 https://x-cmd.com/uptime。会渲染 `data/index.tsv` 中每个 provider 的红/黄/绿指示灯,带搜索和卡片布局。数据源是本仓未来 GitHub Action 产出的 `status-live.json`。"
+        confidence: 9
+        reference:
+          - README.md
+
+  - name:
+      en: "monitoring"
+      cn: "监控"
+    qa:
+      - id: self-hosted-default
+        question:
+          en: "What's the default self-hosted monitor in 2026?"
+          cn: "2026 年自托管监控的默认选择是什么?"
+        answer:
+          en: "Uptime Kuma. One `docker run` and you get a UI, a status page, and Telegram / Slack / email / Discord alerts. ~50k GitHub stars, very active. Repo: https://github.com/louislam/uptime-kuma."
+          cn: "Uptime Kuma。一行 `docker run` 就能拿到 UI、状态页、以及 Telegram / Slack / 邮件 / Discord 告警。GitHub ~50k stars,非常活跃。仓库:https://github.com/louislam/uptime-kuma 。"
+        confidence: 8
+        reference:
+          - docs/1-uptime-content/1-uptime-content.en.md
+
+      - id: cron-style-when
+        question:
+          en: "When should I use a cron-style monitor (Healthchecks.io) instead of an HTTP monitor?"
+          cn: "什么场景该用 cron 风格监控(Healthchecks.io)而不是 HTTP 监控?"
+        answer:
+          en: "When the failure mode is \"the cron job didn't run at all\" rather than \"the server is down.\" Healthchecks.io alerts you when an expected ping doesn't arrive. https://healthchecks.io/."
+          cn: "当故障模式是\"任务根本没跑\"而不是\"服务器宕机\"。Healthchecks.io 在预期 ping 没到时告警。https://healthchecks.io/ 。"
+        confidence: 9
+        reference:
+          - docs/1-uptime-content/1-uptime-content.en.md
+
+      - id: gh-actions-cron-reliability
+        question:
+          en: "Is GitHub Actions cron a real monitor?"
+          cn: "GitHub Actions cron 能算真正的监控吗?"
+        answer:
+          en: "Not on its own — GitHub does not guarantee cron trigger timing. The official docs note delays up to \"several hours.\" Treat Actions cron as a second layer of defense: independent of your host, independent of your DNS, free within the minute cap. Pair it with a dedicated monitor for SLA-grade needs."
+          cn: "单独使用不够 —— GitHub 不保证 cron 触发的时效,官方文档提到最长\"数小时\"的延迟。把 Actions cron 当作第二防线:独立于托管服务商、独立于 DNS、在分钟配额内免费。需要 SLA 级监控时,把它和专用监控配对使用。"
+        confidence: 9
+        reference:
+          - https://docs.github.com/actions/using-workflows/events-that-trigger-workflows#schedule

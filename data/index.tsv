@@ -1,0 +1,17 @@
+name	category	homepage	statuspage	api_type	api_url	region
+anthropic	ai	https://anthropic.com	https://status.anthropic.com	atlassian-statuspage	https://status.anthropic.com/api/v2/summary.json	global
+deepseek	ai	https://www.deepseek.com	https://status.deepseek.com	custom-json	https://status.deepseek.com/api/v1/status	cn
+gemini	ai	https://gemini.google.com	https://status.gemini.google.com	atlassian-statuspage	https://status.gemini.google.com/api/v2/summary.json	global
+openai	ai	https://openai.com	https://status.openai.com	atlassian-statuspage	https://status.openai.com/api/v2/summary.json	global
+qwen	ai	https://qwen.alibaba.com	https://status.alibabacloud.com	custom-json	https://status.alibabacloud.com/api/v1/status	cn
+aliyun	cloud	https://www.aliyun.com	https://status.aliyun.com	custom-json	https://status.aliyun.com/api/v1/status	cn
+aws	cloud	https://aws.amazon.com	https://health.aws.amazon.com	custom-json	https://health.aws.amazon.com/public/currentevent	global
+azure	cloud	https://azure.microsoft.com	https://status.azure.com	atlassian-statuspage	https://status.azure.com/api/v2/summary.json	global
+cloudflare	cloud	https://www.cloudflare.com	https://www.cloudflarestatus.com	atlassian-statuspage	https://www.cloudflarestatus.com/api/v2/summary.json	global
+gcp	cloud	https://cloud.google.com	https://status.cloud.google.com	custom-json	https://status.cloud.google.com/incidents.json	global
+huawei-cloud	cloud	https://www.huaweicloud.com	https://status.huaweicloud.com	custom-json	https://status.huaweicloud.com/api/v1/status	cn
+tencent-cloud	cloud	https://cloud.tencent.com	https://status.cloud.tencent.com	atlassian-statuspage	https://status.cloud.tencent.com/api/v2/summary.json	cn
+github	other	https://github.com	https://www.githubstatus.com	atlassian-statuspage	https://www.githubstatus.com/api/v2/summary.json	global
+gitlab	other	https://gitlab.com	https://status.gitlab.com	atlassian-statuspage	https://status.gitlab.com/api/v2/summary.json	global
+stripe	other	https://stripe.com	https://status.stripe.com	atlassian-statuspage	https://status.stripe.com/api/v2/summary.json	global
+vercel	other	https://vercel.com	https://www.vercel-status.com	atlassian-statuspage	https://www.vercel-status.com/api/v2/summary.json	global

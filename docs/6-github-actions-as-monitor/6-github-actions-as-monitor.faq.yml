@@ -1,0 +1,109 @@
+id: x-uptime-6-github-actions-as-monitor
+
+data:
+  - name:
+      en: "is it right for me"
+      cn: "是否合适"
+    qa:
+      - id: gh-actions-replacement
+        question:
+          en: "Can GitHub Actions cron replace a real uptime monitor?"
+          cn: "GitHub Actions cron 能替代真正的 uptime 监控吗?"
+        answer:
+          en: "No. The official docs say cron timing can be delayed by 40 minutes on average, and up to several hours. Use GH Actions cron as a SECOND layer of defense — independent of your host, independent of your DNS — alongside a Kuma / UptimeRobot / Better Stack install."
+          cn: "不能。官方文档说 cron 时序平均可能延迟 40 分钟,最长数小时。把 GH Actions cron 当作第二层纵深防御 —— 独立于你的托管、独立于你的 DNS —— 搭配 Kuma / UptimeRobot / Better Stack 使用。"
+        confidence: 9
+        reference:
+          - https://docs.github.com/actions/using-workflows/events-that-trigger-workflows#schedule
+          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md
+
+      - id: offset-minutes
+        question:
+          en: "Why use offset minutes (7, 12, 17, ...) instead of */5?"
+          cn: "为什么用偏移分钟(7、12、17、……)而不是 */5?"
+        answer:
+          en: "The */5 pattern triggers all cron-based workflows at :00, :05, :10, ... — every cron author uses it. That creates a herd effect at round-number minutes where GitHub's scheduler is briefly overloaded. Picking non-round minutes puts your workflow ahead of the crowd and improves trigger timing."
+          cn: "`*/5` 在 :00、:05、:10、……触发 —— 所有 cron 作者都用它。在整点分钟上形成扎堆效应,GitHub 调度器短暂过载。挑非整点分钟让你的 workflow 跑在全网前面,改善触发时序。"
+        confidence: 9
+        reference:
+          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md
+
+  - name:
+      en: "recipes"
+      cn: "配方"
+    qa:
+      - id: recipe-issue-on-failure
+        question:
+          en: "How do I open a GitHub Issue when a probe fails, without spamming the repo?"
+          cn: "探测失败时怎么开 GitHub Issue 又不刷屏?"
+        answer:
+          en: "Three mitigations: (1) check for an open issue first via `gh issue list --label uptime --state open`, (2) use a workflow artifact to track the last-failed timestamp and only open a new issue after N hours, (3) group by failure signature (same 504 across consecutive probes → one issue plus comments)."
+          cn: "三种缓解:(1) 先用 `gh issue list --label uptime --state open` 查有没有开着的,(2) 用 workflow artifact 记上次失败时间戳,只 N 小时后才开新 issue,(3) 按故障特征聚合(连续探测都 504 → 一个 issue 加 comment)。"
+        confidence: 9
+        reference:
+          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md
+
+      - id: csv-status-badge
+        question:
+          en: "How do I build a public status badge using GH Actions?"
+          cn: "怎么用 GH Actions 搭公开状态徽章?"
+        answer:
+          en: "Each probe run appends a row (timestamp, status code) to a `uptime-history.csv` in the repo. To avoid 288 commits/day on `*/5 * * * *`, add a daily squash workflow at `0 0 * * *` that aggregates the rows into one daily commit. The badge generator can read either form."
+          cn: "每次探测跑都往仓库的 `uptime-history.csv` 追加一行(时间戳、状态码)。为避免 `*/5 * * * *` 每天 288 次 commit,加一个每天 `0 0 * * *` 的 squash workflow 把行聚合成单次日 commit。徽章生成器两种格式都能读。"
+        confidence: 9
+        reference:
+          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md
+
+  - name:
+      en: "limits"
+      cn: "限制"
+    qa:
+      - id: minute-cap
+        question:
+          en: "How many minutes does GitHub Actions give me for free?"
+          cn: "GitHub Actions 免费给多少分钟?"
+        answer:
+          en: "By repo visibility: public 2,000/month; private (free plan) 500/month; private (Team) 3,000/month; private (Enterprise) 50,000/month. A 5-minute probe uses ~30 seconds of runner time per execution; `*/5 * * * *` is ~8,640 runs/month, well within the 2,000 free minutes for a public repo but blows through the 500-minute free tier for a private repo in a week."
+          cn: "按仓库可见性:公开 2,000/月;私有(免费)500/月;私有(Team)3,000/月;私有(Enterprise)50,000/月。5 分钟一次探测每次 ~30 秒 runner 时间;`*/5 * * * *` 约 8,640 次/月,公开仓库的 2,000 分钟放得下,私有免费档一周就烧光。"
+        confidence: 9
+        reference:
+          - https://docs.github.com/billing/managing-billing-for-github-actions/about-billing-for-github-actions
+          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md
+
+      - id: cron-sweet-spot-private
+        question:
+          en: "What cron cadence fits a private repo on the free tier?"
+          cn: "私有仓库免费档用什么 cron 频率?"
+        answer:
+          en: "`*/15 * * * *` is the sweet spot: 4 triggers/hour, ~2,880 runs/month, well under the 500-minute free cap. Worst-case detection window is documented; pair it with a primary monitor for sub-15-minute SLA."
+          cn: "`*/15 * * * *` 是甜蜜点:4 次/小时,~2,880 次/月,远低于 500 分钟免费档。最坏检测窗口是文档化的;要亚 15 分钟 SLA 就搭配主要监控。"
+        confidence: 9
+        reference:
+          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md
+
+  - name:
+      en: "security"
+      cn: "安全"
+    qa:
+      - id: secrets-patterns
+        question:
+          en: "How do I probe a private endpoint from GH Actions safely?"
+          cn: "怎么安全地用 GH Actions 探测私有端点?"
+        answer:
+          en: "Three patterns: (1) public side-effect — the /healthz endpoint returns 200 to any caller; (2) HMAC-signed probe — sign a known token, validate server-side; (3) GitHub IP allowlist — configure your endpoint to accept probes only from GitHub's published runner IP ranges. Always store the token under Settings → Secrets and reference it as `${{ secrets.NAME }}`."
+          cn: "三种模式:(1) 公开副作用 —— /healthz 端点对任何调用者返回 200;(2) HMAC 签名探测 —— 签一个已知 token,服务端校验;(3) GitHub IP 白名单 —— 配置端点只接受 GitHub 发布的 runner IP 段的探测。token 永远放在 Settings → Secrets,用 `${{ secrets.NAME }}` 引用。"
+        confidence: 9
+        reference:
+          - https://docs.github.com/actions/security-guides/security-harden-deployments/using-ip-allow-lists-with-github-hosted-runners
+          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md
+
+      - id: never-echo-secrets
+        question:
+          en: "Is it OK to echo a secret in the workflow logs for debugging?"
+          cn: "调试时把 secret echo 到 workflow 日志里可以吗?"
+        answer:
+          en: "Never. Anyone with read access to the repo can see workflow logs, and GitHub's secret-scanning will alert (and may auto-revoke) leaked tokens. Use `::add-mask::` if a secret must appear in a value, but the safer path is to mask it at definition time and use `${{ secrets.NAME }}` without echoing."
+          cn: "永远不行。任何有仓库读权限的人都能看 workflow 日志,GitHub 的 secret scanning 会告警(并可能自动撤销)泄露的 token。如果 secret 必须出现在值里,用 `::add-mask::`,但更安全的路径是在定义时遮罩,用 `${{ secrets.NAME }}` 而不 echo。"
+        confidence: 9
+        reference:
+          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md

@@ -1,0 +1,117 @@
+id: x-uptime-3-self-hosted-monitors
+
+data:
+  - name:
+      en: "Uptime Kuma"
+      cn: "Uptime Kuma"
+    qa:
+      - id: kuma-docker-install
+        question:
+          en: "What's the canonical Docker command for Uptime Kuma?"
+          cn: "Uptime Kuma 的标准 Docker 命令是什么?"
+        answer:
+          en: "`docker run -d --name uptime-kuma --restart=always -p 3001:3001 -v uptime-kuma:/app/data louislam/uptime-kuma:1`. Web UI is on port 3001. SQLite lives in the named volume; restart-safe. Pin to `:1` — the 2.x rewrite is still in progress at time of writing."
+          cn: "`docker run -d --name uptime-kuma --restart=always -p 3001:3001 -v uptime-kuma:/app/data louislam/uptime-kuma:1`。Web UI 在 3001 端口。SQLite 在命名卷里,重启不丢。Pin 到 `:1` —— 2.x 重写 2026 年底仍在进行。"
+        confidence: 9
+        reference:
+          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md
+
+      - id: kuma-alert-channels
+        question:
+          en: "How many alert channels does Uptime Kuma support?"
+          cn: "Uptime Kuma 支持多少个告警通道?"
+        answer:
+          en: "About 90 at time of writing — Telegram, Slack, Discord, email, SMS via Twilio, ntfy, Gotify, Pushover, and many more. Channels are configured per-monitor in the UI."
+          cn: "约 90 个(2026 年),Telegram、Slack、Discord、邮件、经 Twilio 的短信、ntfy、Gotify、Pushover 等。通道在 UI 里按 monitor 配置。"
+        confidence: 8
+        reference:
+          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md
+
+      - id: kuma-ha
+        question:
+          en: "Does Uptime Kuma support HA?"
+          cn: "Uptime Kuma 支持 HA 吗?"
+        answer:
+          en: "Single-instance + SQLite is the default. For HA: either run two instances behind a load balancer with a shared external Postgres (1.x), or use the documented Postgres back end. SQLite is fine for a single node; replace it before scaling out."
+          cn: "默认是单实例 + SQLite。要 HA:要么两个实例放负载均衡后 + 共享外部 Postgres(1.x),要么用文档化的 Postgres 后端。SQLite 对单节点够用,横向扩展前换掉。"
+        confidence: 8
+        reference:
+          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md
+
+  - name:
+      en: "Beszel"
+      cn: "Beszel"
+    qa:
+      - id: beszel-vs-kuma
+        question:
+          en: "When do I pick Beszel over Uptime Kuma?"
+          cn: "何时选 Beszel 而不是 Uptime Kuma?"
+        answer:
+          en: "Beszel's primary strength is per-host resource monitoring (CPU, memory, disk, network) via its agent. Pick Beszel when fleet resource monitoring matters more than HTTP probe depth. A common pattern is Beszel for the fleet and Uptime Kuma for service uptime on the same host."
+          cn: "Beszel 的强项是通过 agent 做每主机资源监控(CPU、内存、磁盘、网络)。当 fleet 资源监控比 HTTP 探测深度更重要时选 Beszel。常见组合是 Beszel 盯 fleet + Uptime Kuma 盯服务 uptime,跑在同一台机器上。"
+        confidence: 9
+        reference:
+          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md
+
+      - id: beszel-agent-port
+        question:
+          en: "What port does the Beszel agent listen on, and is it safe to expose?"
+          cn: "Beszel agent 监听哪个端口,可以公开暴露吗?"
+        answer:
+          en: "Default port is 45876, and the agent speaks to the hub over the host network. Expose it only on the trusted side — the agent should never be reachable from the public internet."
+          cn: "默认端口 45876,agent 通过 host 网络和 hub 通信。只在受信侧暴露 —— agent 永远不应该从公网可达。"
+        confidence: 9
+        reference:
+          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md
+
+  - name:
+      en: "Prometheus + blackbox"
+      cn: "Prometheus + blackbox"
+    qa:
+      - id: when-prometheus-blackbox
+        question:
+          en: "When does adding Prometheus + blackbox_exporter make sense?"
+          cn: "什么时候加 Prometheus + blackbox_exporter 是合适的?"
+        answer:
+          en: "When you already run Prometheus (and Alertmanager and Grafana). In that environment adding HTTP probes is one extra scrape config and one alert rule. Outside an existing Prometheus install, the operational overhead is too high — Uptime Kuma ships faster."
+          cn: "当你已经在跑 Prometheus(以及 Alertmanager 和 Grafana)。在那个环境里加 HTTP 探测就是一段 scrape 配置 + 一条告警规则。脱离现有 Prometheus,运维负担就太重 —— Uptime Kuma 上线更快。"
+        confidence: 9
+        reference:
+          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md
+
+      - id: blackbox-probe-modules
+        question:
+          en: "What probe modules does blackbox_exporter ship with?"
+          cn: "blackbox_exporter 自带哪些 probe module?"
+        answer:
+          en: "Common ones: `http_2xx`, `http_post_2xx`, `tcp_connect`, `icmp`, `dns`, `ssh_banner`. Module config goes in `blackbox.yml`. Prometheus references the module by name in the scrape job's `params.module`."
+          cn: "常见的有:`http_2xx`、`http_post_2xx`、`tcp_connect`、`icmp`、`dns`、`ssh_banner`。module 配置在 `blackbox.yml` 里。Prometheus 在 scrape job 的 `params.module` 里按名字引用。"
+        confidence: 8
+        reference:
+          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md
+
+  - name:
+      en: "decision"
+      cn: "决策"
+    qa:
+      - id: kuma-or-beszel-or-prom
+        question:
+          en: "Between Kuma, Beszel, and Prometheus + blackbox, which one should I install first?"
+          cn: "Kuma、Beszel、Prometheus + blackbox 三选一,先装哪个?"
+        answer:
+          en: "Start with Uptime Kuma unless you have a specific reason not to. It has the richest HTTP checks, the most alert channels, and a built-in status page — all behind one UI. Add Beszel later if fleet resource monitoring becomes important. Adopt Prometheus + blackbox only when Prometheus is already in your stack."
+          cn: "没有特殊理由就先用 Uptime Kuma。它 HTTP 检查最丰富、告警通道最多、内置状态页,都在一个 UI 里。后面 fleet 资源监控变重要再加 Beszel。只有 Prometheus 已经在你的栈里时,才采纳 Prometheus + blackbox。"
+        confidence: 9
+        reference:
+          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md
+
+      - id: monitor-the-monitor
+        question:
+          en: "How do I make sure my self-hosted monitor itself is monitored?"
+          cn: "怎么保证自托管监控本身也在被监控?"
+        answer:
+          en: "Pair it with an independent second layer — typically a GitHub Actions cron workflow that probes the monitor's UI or status page. Self-hosted monitoring that isn't itself monitored is a single point of failure. See `6-github-actions-as-monitor`."
+          cn: "配一个独立的第二层 —— 通常是 GitHub Actions cron workflow 去探测监控的 UI 或状态页。自托管监控如果本身不被监控,就是一个单点故障。见 `6-github-actions-as-monitor`。"
+        confidence: 9
+        reference:
+          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md

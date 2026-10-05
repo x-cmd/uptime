@@ -1,0 +1,45 @@
+name: regenerate-index-tsv
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/index.yml'
+      - '.x-cmd/build-index-tsv.py'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'data/index.yml'
+      - '.x-cmd/build-index-tsv.py'
+      - 'data/index.tsv'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check-and-regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate schema
+        run: python3 .x-cmd/build-index-tsv.py --check
+
+      - name: Regenerate data/index.tsv on push to main
+        if: github.event_name == 'push'
+        run: |
+          python3 .x-cmd/build-index-tsv.py
+          if git diff --quiet data/index.tsv; then
+            echo "index.tsv is up to date"
+            exit 0
+          fi
+          git config user.name "x-cmd-bot"
+          git config user.email "bot@x-cmd.com"
+          git add data/index.tsv
+          git commit -m "chore(data): regenerate index.tsv from index.yml"
+          git push
