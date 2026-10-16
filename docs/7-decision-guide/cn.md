@@ -178,12 +178,12 @@ UptimeRobot 的外部探测看不见。自托管是天然形态。
 
 ## 相关资源
 
-- [`1-uptime-content`](../1-uptime-content/1-uptime-content.cn.md) —— 概览
-- [`2-the-catalog`](../2-the-catalog/2-the-catalog.cn.md) —— 本仓目录
-- [`3-self-hosted-monitors`](../3-self-hosted-monitors/3-self-hosted-monitors.cn.md) —— 自托管选项
-- [`4-hosted-monitors`](../4-hosted-monitors/4-hosted-monitors.cn.md) —— 托管选项
-- [`5-cron-style-monitoring`](../5-cron-style-monitoring/5-cron-style-monitoring.cn.md) —— cron 风格选项
-- [`6-github-actions-as-monitor`](../6-github-actions-as-monitor/6-github-actions-as-monitor.cn.md) —— 第二层配方
+- [`1-uptime-content`](../1-uptime-content/cn.md) —— 概览
+- [`2-the-catalog`](../2-the-catalog/cn.md) —— 本仓目录
+- [`3-self-hosted-monitors`](../3-self-hosted-monitors/cn.md) —— 自托管选项
+- [`4-hosted-monitors`](../4-hosted-monitors/cn.md) —— 托管选项
+- [`5-cron-style-monitoring`](../5-cron-style-monitoring/cn.md) —— cron 风格选项
+- [`6-github-actions-as-monitor`](../6-github-actions-as-monitor/cn.md) —— 第二层配方
 
 ## 许可
 

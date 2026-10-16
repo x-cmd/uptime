@@ -14,7 +14,7 @@ data:
           cn: "50 个监控、5 分钟间隔 —— HTTP(S)、ping、port、keyword 检查。邮件和少量 webhook 含。多数免费用户的瓶颈是 5 分钟粒度,不是监控数。故障 0-5 分钟才会被检测。"
         confidence: 9
         reference:
-          - docs/4-hosted-monitors/4-hosted-monitors.en.md
+          - docs/4-hosted-monitors/en.md
 
       - id: uptimerobot-pro-vs-free
         question:
@@ -25,7 +25,7 @@ data:
           cn: "Pro(2026 年约 $7/mo):1 分钟检查间隔、更多监控、短信告警、多个状态页。再上一档加团队功能、事故管理、SLA 报告。"
         confidence: 9
         reference:
-          - docs/4-hosted-monitors/4-hosted-monitors.en.md
+          - docs/4-hosted-monitors/en.md
 
   - name:
       en: "Better Stack"
@@ -40,7 +40,7 @@ data:
           cn: "状态页编辑器(事故可手动发布、可从 uptime 故障自动检测、可两者兼有)、最便宜付费档 30 秒间隔、JSON-path 和 SSL 到期检查、内置 on-call 产品。状态页是产品表面的一部分,不是附属品。"
         confidence: 9
         reference:
-          - docs/4-hosted-monitors/4-hosted-monitors.en.md
+          - docs/4-hosted-monitors/en.md
 
       - id: better-stack-pricing
         question:
@@ -51,7 +51,7 @@ data:
           cn: "免费:第一个监控(1 分钟间隔)+ 一个状态页。Starter 档:小团队 2026 年约 $25/mo,多个状态页、更丰富的告警路由。Enterprise 规模到几百个监控,带 SOC 2、审计日志、SSO。"
         confidence: 9
         reference:
-          - docs/4-hosted-monitors/4-hosted-monitors.en.md
+          - docs/4-hosted-monitors/en.md
 
   - name:
       en: "Better Uptime"
@@ -66,7 +66,7 @@ data:
           cn: "两家都做 uptime + 状态页 + on-call。Better Uptime 的差异化是事故管理工作流:Sentry 风格的复盘模板、状态更新、retros。如果团队已经在用 PagerDuty,只需要 uptime,Better Uptime 过重。想一家供应商搞定监控 + 状态 + on-call + 复盘,Better Uptime 意见更明确。"
         confidence: 9
         reference:
-          - docs/4-hosted-monitors/4-hosted-monitors.en.md
+          - docs/4-hosted-monitors/en.md
 
   - name:
       en: "Hyperping"
@@ -81,7 +81,7 @@ data:
           cn: "当你是独立开发者或微型团队,想要比 UptimeRobot 免费版更好的间隔和更好看的状态页,且不需要 Better Stack / Better Uptime 的事故管理栈时。Hyperping 正合\"盯几个站点、拿到好看的告警、上一个状态页\"。"
         confidence: 8
         reference:
-          - docs/4-hosted-monitors/4-hosted-monitors.en.md
+          - docs/4-hosted-monitors/en.md
 
   - name:
       en: "hosted vs self-hosted"
@@ -96,7 +96,7 @@ data:
           cn: "没有专职 ops 也无现成基础设施可以挂自托管监控时。2026 年这种情况几乎总是托管对。一旦两样都有其中一样,自托管开始在成本和数据驻留上胜出。"
         confidence: 9
         reference:
-          - docs/4-hosted-monitors/4-hosted-monitors.en.md
+          - docs/4-hosted-monitors/en.md
 
       - id: hosted-monitor-down-mitigation
         question:
@@ -107,4 +107,4 @@ data:
           cn: "配一个独立的 GitHub Actions cron,探测监控自家的状态页 URL。状态页在 GH 这边变红,说明托管监控本身坏了。recipe 见 `6-github-actions-as-monitor`。"
         confidence: 9
         reference:
-          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md
+          - docs/6-github-actions-as-monitor/en.md

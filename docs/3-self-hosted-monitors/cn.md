@@ -15,7 +15,7 @@ x-json-ld:
 # 自托管 uptime 监控
 
 > **本文内容。** 第一篇文章
-> ([`1-uptime-content`](../1-uptime-content/1-uptime-content.cn.md))
+> ([`1-uptime-content`](../1-uptime-content/cn.md))
 > 只顺带提了自托管监控。本文深入:**Uptime Kuma**、**Beszel**、
 > **Prometheus + blackbox_exporter**、**statping-ng** 这四个 2026 年
 > 真正用得上的选项的安装、配置、告警通道、横评。
@@ -23,7 +23,7 @@ x-json-ld:
 "自托管"意味着:你跑一台服务器(或服务器上的一个容器)去做探测、
 发告警。优点是:不依赖任何第三方的计费、宕机策略、数据驻留策略。
 缺点是:你多了一个东西要保证它在跑 —— 这也是为什么你应该监控**监控
-本身**(见 [`6-github-actions-as-monitor`](../6-github-actions-as-monitor/6-github-actions-as-monitor.cn.md))。
+本身**(见 [`6-github-actions-as-monitor`](../6-github-actions-as-monitor/cn.md))。
 
 ## 1. Uptime Kuma —— 现代默认选择
 
@@ -217,9 +217,9 @@ MIT 许可 / Node.js footprint 在你的环境里有冲突时,才选 statping-ng
 
 ## 相关资源
 
-- [`1-uptime-content`](../1-uptime-content/1-uptime-content.cn.md) —— 概览
-- [`4-hosted-monitors`](../4-hosted-monitors/4-hosted-monitors.cn.md) —— 不想自托管时的替代
-- [`6-github-actions-as-monitor`](../6-github-actions-as-monitor/6-github-actions-as-monitor.cn.md) —— 独立第二层
+- [`1-uptime-content`](../1-uptime-content/cn.md) —— 概览
+- [`4-hosted-monitors`](../4-hosted-monitors/cn.md) —— 不想自托管时的替代
+- [`6-github-actions-as-monitor`](../6-github-actions-as-monitor/cn.md) —— 独立第二层
 - [Uptime Kuma](https://github.com/louislam/uptime-kuma) GitHub
 - [Beszel](https://github.com/henrygd/beszel) GitHub
 - [Prometheus blackbox_exporter](https://github.com/prometheus/blackbox_exporter) GitHub

@@ -14,7 +14,7 @@ data:
           cn: "name、category、homepage、statuspage、api_type、api_url、region。按 (category, name) 升序排序,均不区分大小写。表头在第 1 行,用 `awk -F'\\t' 'NR > 1'` 跳过。"
         confidence: 9
         reference:
-          - docs/2-the-catalog/2-the-catalog.en.md
+          - docs/2-the-catalog/en.md
           - SKILL.md
 
       - id: required-vs-optional-fields
@@ -26,7 +26,7 @@ data:
           cn: "必填:name、homepage、statuspage、api_type、api_url。可选:region。CI 拒绝任何缺必填字段的条目,错误信息指出文件和字段。`region` 对跨 cn/global 的厂商允许留空。"
         confidence: 9
         reference:
-          - docs/2-the-catalog/2-the-catalog.en.md
+          - docs/2-the-catalog/en.md
           - .x-cmd/build-index-tsv.py
 
       - id: can-i-edit-index-tsv-by-hand
@@ -54,7 +54,7 @@ data:
           cn: "四个值:`atlassian-statuspage`(托管在 Statuspage.io / Atlassian Statuspage,JSON 在 `<host>/api/v2/summary.json`)、`custom-json`(厂商自定义接口,如 AWS / GCP / Aliyun)、`statuspal`(托管在 statuspal.com)、`rss`(厂商只发布 feed)。按实际响应形状选 —— 实时面板 parser 按此路由。"
         confidence: 9
         reference:
-          - docs/2-the-catalog/2-the-catalog.en.md
+          - docs/2-the-catalog/en.md
 
       - id: how-do-i-add-a-new-api-type
         question:
@@ -65,7 +65,7 @@ data:
           cn: "新增一个值并在 PR 里描述所需的归一化逻辑。实时面板 parser 表需要随目录一起增长。在 parser 支持新值之前,把条目标为 `custom-json` 并在 PR 描述里附上响应形状规范。"
         confidence: 8
         reference:
-          - docs/2-the-catalog/2-the-catalog.en.md
+          - docs/2-the-catalog/en.md
 
   - name:
       en: "queries and regions"
@@ -80,7 +80,7 @@ data:
           cn: "目前:`cn` 大陆厂商,`global` 其他,留空给跨区域厂商。x-cmd.com/uptime 的实时面板会暴露 region 开关按此列过滤。一个厂商每个 region 各一个状态页时,应选一个规范面(推荐),而不是列两次。"
         confidence: 9
         reference:
-          - docs/2-the-catalog/2-the-catalog.en.md
+          - docs/2-the-catalog/en.md
 
       - id: where-do-i-check-vendor-x
         question:
@@ -91,7 +91,7 @@ data:
           cn: "拉 TSV 然后按第 1 列过滤:`curl -fsSL https://raw.githubusercontent.com/x-cmd/uptime/main/data/index.tsv | awk -F'\\t' '$1 == \"<name>\" { print $4 }'`。第 4 列 `statuspage` 是人读 URL。"
         confidence: 9
         reference:
-          - docs/2-the-catalog/2-the-catalog.en.md
+          - docs/2-the-catalog/en.md
 
   - name:
       en: "contributing"
@@ -107,7 +107,7 @@ data:
         confidence: 9
         reference:
           - CONTRIBUTING.md
-          - docs/2-the-catalog/2-the-catalog.en.md
+          - docs/2-the-catalog/en.md
 
       - id: what-happens-to-stale-urls
         question:
@@ -118,4 +118,4 @@ data:
           cn: "实时面板会探测旧 URL、得到非 2xx,该卡片会变红并保持红,直到有人更新 `data/index.yml`。修法是 `index.yml` 一行 + 一个 PR。"
         confidence: 9
         reference:
-          - docs/2-the-catalog/2-the-catalog.en.md
+          - docs/2-the-catalog/en.md

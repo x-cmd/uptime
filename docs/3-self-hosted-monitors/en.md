@@ -15,7 +15,7 @@ x-json-ld:
 # Self-hosted uptime monitors
 
 > **What this article covers.** The first article
-> ([`1-uptime-content`](../1-uptime-content/1-uptime-content.en.md))
+> ([`1-uptime-content`](../1-uptime-content/en.md))
 > mentioned self-hosted monitors in passing. This one dives in:
 > install, configure, alert channels, and a side-by-side comparison
 > of the four options that matter in 2026 — **Uptime Kuma**,
@@ -28,7 +28,7 @@ independence from any third party's billing, downtime, or
 data-residency posture. The disadvantage is that you now have a
 new thing to keep running — which is why you should be monitoring
 **the monitor itself** (covered in
-[`6-github-actions-as-monitor`](../6-github-actions-as-monitor/6-github-actions-as-monitor.en.md)).
+[`6-github-actions-as-monitor`](../6-github-actions-as-monitor/en.md)).
 
 ## 1. Uptime Kuma — the default modern choice
 
@@ -245,9 +245,9 @@ problem for your environment.
 
 ## Related resources
 
-- [`1-uptime-content`](../1-uptime-content/1-uptime-content.en.md) — overview
-- [`4-hosted-monitors`](../4-hosted-monitors/4-hosted-monitors.en.md) — if you don't want to run anything
-- [`6-github-actions-as-monitor`](../6-github-actions-as-monitor/6-github-actions-as-monitor.en.md) — independent second layer
+- [`1-uptime-content`](../1-uptime-content/en.md) — overview
+- [`4-hosted-monitors`](../4-hosted-monitors/en.md) — if you don't want to run anything
+- [`6-github-actions-as-monitor`](../6-github-actions-as-monitor/en.md) — independent second layer
 - [Uptime Kuma](https://github.com/louislam/uptime-kuma) on GitHub
 - [Beszel](https://github.com/henrygd/beszel) on GitHub
 - [Prometheus blackbox_exporter](https://github.com/prometheus/blackbox_exporter) on GitHub

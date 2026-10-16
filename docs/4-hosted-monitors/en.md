@@ -15,7 +15,7 @@ x-json-ld:
 # Hosted uptime monitors
 
 > **What this article covers.** The first article
-> ([`1-uptime-content`](../1-uptime-content/1-uptime-content.en.md))
+> ([`1-uptime-content`](../1-uptime-content/en.md))
 > mentioned hosted monitors briefly. This one walks the four that
 > matter in 2026 — **UptimeRobot**, **Better Stack**, **Better
 > Uptime**, and **Hyperping** — covers what each is good at, what
@@ -26,11 +26,11 @@ A hosted monitor is the right answer when you don't want to operate
 any infrastructure yourself: someone else's boxes probe your
 endpoints and call your phone when they fail. The trade-off — which
 the self-hosted tools in
-[`3-self-hosted-monitors`](../3-self-hosted-monitors/3-self-hosted-monitors.en.md)
+[`3-self-hosted-monitors`](../3-self-hosted-monitors/en.md)
 don't have — is that **when your hosted-monitor account is
 itself down (or past the grace period), your monitoring is also
 down**. The recommended mitigation is in
-[`6-github-actions-as-monitor`](../6-github-actions-as-monitor/6-github-actions-as-monitor.en.md).
+[`6-github-actions-as-monitor`](../6-github-actions-as-monitor/en.md).
 
 ## 1. UptimeRobot — the default free option
 
@@ -188,11 +188,11 @@ GitHub side tells you the host monitor is itself broken.
 
 ## Related resources
 
-- [`1-uptime-content`](../1-uptime-content/1-uptime-content.en.md) — overview
-- [`3-self-hosted-monitors`](../3-self-hosted-monitors/3-self-hosted-monitors.en.md) — if you want to run it yourself
-- [`5-cron-style-monitoring`](../5-cron-style-monitoring/5-cron-style-monitoring.en.md) — for cron jobs, not HTTP endpoints
-- [`6-github-actions-as-monitor`](../6-github-actions-as-monitor/6-github-actions-as-monitor.en.md) — independent second layer
-- [`7-decision-guide`](../7-decision-guide/7-decision-guide.en.md) — pick by scenario
+- [`1-uptime-content`](../1-uptime-content/en.md) — overview
+- [`3-self-hosted-monitors`](../3-self-hosted-monitors/en.md) — if you want to run it yourself
+- [`5-cron-style-monitoring`](../5-cron-style-monitoring/en.md) — for cron jobs, not HTTP endpoints
+- [`6-github-actions-as-monitor`](../6-github-actions-as-monitor/en.md) — independent second layer
+- [`7-decision-guide`](../7-decision-guide/en.md) — pick by scenario
 
 ## License
 

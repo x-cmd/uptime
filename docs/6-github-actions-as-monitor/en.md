@@ -21,7 +21,7 @@ x-json-ld:
 > This article walks the recipes and the caveats.
 
 The first article
-([`1-uptime-content`](../1-uptime-content/1-uptime-content.en.md))
+([`1-uptime-content`](../1-uptime-content/en.md))
 showed two minimal recipes. This one expands them and covers the
 real-world pieces: how to use cron timing you can rely on,
 minute caps, security around exposing tokens, and four escalation
@@ -30,9 +30,9 @@ patterns for when a probe fails.
 ## 1. Why GitHub Actions is a useful second layer
 
 Every self-hosted and hosted monitor in
-[`3-self-hosted-monitors`](../3-self-hosted-monitors/3-self-hosted-monitors.en.md)
+[`3-self-hosted-monitors`](../3-self-hosted-monitors/en.md)
 and
-[`4-hosted-monitors`](../4-hosted-monitors/4-hosted-monitors.en.md)
+[`4-hosted-monitors`](../4-hosted-monitors/en.md)
 has a single point of failure in common: **the monitor and the
 target run in the same network**. A GitHub Actions cron breaks
 that:
@@ -302,10 +302,10 @@ alongside a primary monitor.
 
 ## Related resources
 
-- [`1-uptime-content`](../1-uptime-content/1-uptime-content.en.md) — overview + first recipes
-- [`3-self-hosted-monitors`](../3-self-hosted-monitors/3-self-hosted-monitors.en.md) — primary monitor choices
-- [`4-hosted-monitors`](../4-hosted-monitors/4-hosted-monitors.en.md) — hosted primary monitors
-- [`7-decision-guide`](../7-decision-guide/7-decision-guide.en.md) — pick by scenario
+- [`1-uptime-content`](../1-uptime-content/en.md) — overview + first recipes
+- [`3-self-hosted-monitors`](../3-self-hosted-monitors/en.md) — primary monitor choices
+- [`4-hosted-monitors`](../4-hosted-monitors/en.md) — hosted primary monitors
+- [`7-decision-guide`](../7-decision-guide/en.md) — pick by scenario
 - [GitHub Actions: scheduled events](https://docs.github.com/actions/using-workflows/events-that-trigger-workflows#schedule)
 - [GitHub Actions: IP allowlists](https://docs.github.com/actions/security-guides/security-harden-deployments/using-ip-allow-lists-with-github-hosted-runners)
 - [GitHub Actions: billing](https://docs.github.com/billing/managing-billing-for-github-actions/about-billing-for-github-actions)

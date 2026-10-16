@@ -220,12 +220,12 @@ HTTP endpoint to watch.
 
 ## Related resources
 
-- [`1-uptime-content`](../1-uptime-content/1-uptime-content.en.md) — overview
-- [`2-the-catalog`](../2-the-catalog/2-the-catalog.en.md) — this repo's catalog
-- [`3-self-hosted-monitors`](../3-self-hosted-monitors/3-self-hosted-monitors.en.md) — self-hosted picks
-- [`4-hosted-monitors`](../4-hosted-monitors/4-hosted-monitors.en.md) — hosted picks
-- [`5-cron-style-monitoring`](../5-cron-style-monitoring/5-cron-style-monitoring.en.md) — cron-style picks
-- [`6-github-actions-as-monitor`](../6-github-actions-as-monitor/6-github-actions-as-monitor.en.md) — second-layer recipes
+- [`1-uptime-content`](../1-uptime-content/en.md) — overview
+- [`2-the-catalog`](../2-the-catalog/en.md) — this repo's catalog
+- [`3-self-hosted-monitors`](../3-self-hosted-monitors/en.md) — self-hosted picks
+- [`4-hosted-monitors`](../4-hosted-monitors/en.md) — hosted picks
+- [`5-cron-style-monitoring`](../5-cron-style-monitoring/en.md) — cron-style picks
+- [`6-github-actions-as-monitor`](../6-github-actions-as-monitor/en.md) — second-layer recipes
 
 ## License
 

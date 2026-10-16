@@ -42,14 +42,14 @@ If you find that a vendor's `api_url` has changed, please update `index.yml` and
 
 ## 2. Write an article
 
-Article slots live under `docs/<n>-<slug>/` (the leading integer is reading order). Each slot is **four files kept in sync**:
+Article slots live under `docs/<n>-<slug>/` (the leading integer is reading order; the folder name is the slot identifier — files inside do not repeat it). Each slot is **four files kept in sync**:
 
 ```
 docs/<n>-<slug>/
-├── <n>-<slug>.en.md        # English article body
-├── <n>-<slug>.cn.md        # Chinese translation
-├── <n>-<slug>.llms.md      # LLM-friendly summary (flat sections)
-└── <n>-<slug>.faq.yml      # structured bilingual Q&A
+├── en.md        # English article body
+├── cn.md        # Chinese translation
+├── llms.md      # LLM-friendly summary (flat sections)
+└── faq.yml      # structured bilingual Q&A
 ```
 
 Frontmatter (`.en.md` / `.cn.md`):

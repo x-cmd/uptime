@@ -19,14 +19,14 @@ x-json-ld:
 > 在 Actions 分钟配额内免费。本文走完配方和注意事项。
 
 第一篇文章
-([`1-uptime-content`](../1-uptime-content/1-uptime-content.cn.md))
+([`1-uptime-content`](../1-uptime-content/cn.md))
 给出了两个最小配方。本文展开,覆盖实战细节:用可信的 cron 时序、
 分钟配额、暴露 token 的安全、以及探测失败的四种升级模式。
 
 ## 1. 为什么 GitHub Actions 是有用的第二层
 
-[`3-self-hosted-monitors`](../3-self-hosted-monitors/3-self-hosted-monitors.cn.md)
-和 [`4-hosted-monitors`](../4-hosted-monitors/4-hosted-monitors.cn.md)
+[`3-self-hosted-monitors`](../3-self-hosted-monitors/cn.md)
+和 [`4-hosted-monitors`](../4-hosted-monitors/cn.md)
 里每一个自托管和托管监控都有一个共同的单点故障:**监控和目标跑在
 同一个网络里**。GitHub Actions cron 把这打破:
 
@@ -273,10 +273,10 @@ Actions`,**不要** 写在 workflow 文件里。用 `${{ secrets.NAME }}`
 
 ## 相关资源
 
-- [`1-uptime-content`](../1-uptime-content/1-uptime-content.cn.md) —— 概览 + 首批配方
-- [`3-self-hosted-monitors`](../3-self-hosted-monitors/3-self-hosted-monitors.cn.md) —— 主要监控选择
-- [`4-hosted-monitors`](../4-hosted-monitors/4-hosted-monitors.cn.md) —— 托管主要监控
-- [`7-decision-guide`](../7-decision-guide/7-decision-guide.cn.md) —— 按场景选择
+- [`1-uptime-content`](../1-uptime-content/cn.md) —— 概览 + 首批配方
+- [`3-self-hosted-monitors`](../3-self-hosted-monitors/cn.md) —— 主要监控选择
+- [`4-hosted-monitors`](../4-hosted-monitors/cn.md) —— 托管主要监控
+- [`7-decision-guide`](../7-decision-guide/cn.md) —— 按场景选择
 - [GitHub Actions: scheduled events](https://docs.github.com/actions/using-workflows/events-that-trigger-workflows#schedule)
 - [GitHub Actions: IP allowlists](https://docs.github.com/actions/security-guides/security-harden-deployments/using-ip-allow-lists-with-github-hosted-runners)
 - [GitHub Actions: billing](https://docs.github.com/billing/managing-billing-for-github-actions/about-billing-for-github-actions)

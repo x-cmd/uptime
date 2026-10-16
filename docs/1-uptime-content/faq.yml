@@ -14,7 +14,7 @@ data:
           cn: "三件事:系统已运行时长(`dd:hh:mm` 形式)、当前登录用户数、以及过去 1/5/15 分钟的负载平均。手册页:https://man.x-cmd.com/man1/uptime 。"
         confidence: 9
         reference:
-          - docs/1-uptime-content/1-uptime-content.en.md
+          - docs/1-uptime-content/en.md
 
       - id: how-does-x-uptime-differ
         question:
@@ -25,7 +25,7 @@ data:
           cn: "`x uptime` 是 x-cmd 的封装,新增了格式化选项(`--pretty`)、机器可读输出(`--json`),以及(规划中)从本仓 `data/index.tsv` 叠加 provider 状态的能力。见 https://x-cmd.com/mod/uptime 。"
         confidence: 9
         reference:
-          - docs/1-uptime-content/1-uptime-content.en.md
+          - docs/1-uptime-content/en.md
 
   - name:
       en: "the catalog"
@@ -89,7 +89,7 @@ data:
           cn: "Uptime Kuma。一行 `docker run` 就能拿到 UI、状态页、以及 Telegram / Slack / 邮件 / Discord 告警。GitHub ~50k stars,非常活跃。仓库:https://github.com/louislam/uptime-kuma 。"
         confidence: 8
         reference:
-          - docs/1-uptime-content/1-uptime-content.en.md
+          - docs/1-uptime-content/en.md
 
       - id: cron-style-when
         question:
@@ -100,7 +100,7 @@ data:
           cn: "当故障模式是\"任务根本没跑\"而不是\"服务器宕机\"。Healthchecks.io 在预期 ping 没到时告警。https://healthchecks.io/ 。"
         confidence: 9
         reference:
-          - docs/1-uptime-content/1-uptime-content.en.md
+          - docs/1-uptime-content/en.md
 
       - id: gh-actions-cron-reliability
         question:

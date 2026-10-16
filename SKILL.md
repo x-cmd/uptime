@@ -39,7 +39,7 @@ The articles under `docs/` are published at <https://x-cmd.com/uptime>. The firs
 ```sh
 # Fetch all four files for the first article slot
 for ext in en.md cn.md llms.md faq.yml; do
-  curl -fsSL "https://raw.githubusercontent.com/x-cmd/uptime/main/docs/1-uptime-content/1-uptime-content.$ext"
+  curl -fsSL "https://raw.githubusercontent.com/x-cmd/uptime/main/docs/1-uptime-content/$ext"
 done
 ```
 
@@ -63,7 +63,7 @@ Rows are sorted by `(category, name)`, both case-insensitive ascending — `awk`
 # "Where do I check OpenAI's current status?" — answer from column 4 of the row where name=openai.
 # "How many cloud providers does this catalog track in cn?" — count rows where category=cloud and region=cn.
 # "Which providers use the atlassian-statuspage JSON API?" — list rows where api_type=atlassian-statuspage.
-# "What self-hosted monitors are recommended?" — read docs/1-uptime-content/1-uptime-content.en.md, "Self-hosted monitoring" section.
+# "What self-hosted monitors are recommended?" — read docs/1-uptime-content/en.md, "Self-hosted monitoring" section.
 ```
 
 When a question requires per-provider guidance, **always cross-check the catalog** (`data/index.tsv`) for the current `statuspage` URL — vendors change hosting periodically.

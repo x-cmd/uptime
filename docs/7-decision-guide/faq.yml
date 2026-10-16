@@ -14,7 +14,7 @@ data:
           cn: "UptimeRobot 免费档(50 监控、5 分钟间隔)。加 GitHub Actions cron `*/15` 探测状态页 URL 当第二层。总成本 $0/mo。不要为个人站点自托管 Kuma —— 没有收益的运维债。"
         confidence: 9
         reference:
-          - docs/7-decision-guide/7-decision-guide.en.md
+          - docs/7-decision-guide/en.md
 
       - id: saas-paying-users-pick
         question:
@@ -25,7 +25,7 @@ data:
           cn: "Better Stack 或 Better Uptime —— 两家都有打磨过的状态页、事故发布、on-call。Better Stack 偏状态页为先,Better Uptime 偏事故管理意见化。加 GH Actions cron `*/5`(公开)或 `*/15`(私有),Healthchecks.io 盯夜间任务。总成本 $25-70/mo。"
         confidence: 9
         reference:
-          - docs/7-decision-guide/7-decision-guide.en.md
+          - docs/7-decision-guide/en.md
 
       - id: internal-tool-pick
         question:
@@ -36,7 +36,7 @@ data:
           cn: "在已有的容器上自托管 Uptime Kuma。在同一台机器搭自托管 Beszel,加每服务器资源监控。GH Actions cron `*/30` 是充分的第二层。总成本 $0 + 机器成本。托管监控(Better Stack、UptimeRobot)看不到只有内网可达的服务。"
         confidence: 9
         reference:
-          - docs/7-decision-guide/7-decision-guide.en.md
+          - docs/7-decision-guide/en.md
 
       - id: scheduled-jobs-pick
         question:
@@ -47,7 +47,7 @@ data:
           cn: "Healthchecks.io —— 开源,开源项目免费,OSS 可在 Postgres 上自托管。每个任务一个 UUID,ping /start、/、/fail。如果你有一批 cron 条目,想要 schedule 解析 + 运行指标,选 Cronitor。如果任务会推到你在乎的 HTTP 端点,另外加 HTTP 监控。"
         confidence: 9
         reference:
-          - docs/7-decision-guide/7-decision-guide.en.md
+          - docs/7-decision-guide/en.md
 
   - name:
       en: "defense in depth"
@@ -62,8 +62,8 @@ data:
           cn: "每个主要监控都有一个自己抓不到的单点故障:监控本身挂了,或者你和监控的账户过期了。最便宜的独立第二层是 GitHub Actions cron 探测主要监控的状态页 URL,不是你的应用 URL。状态页在 GH 这边变红,说明主要监控本身坏了。"
         confidence: 9
         reference:
-          - docs/7-decision-guide/7-decision-guide.en.md
-          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md
+          - docs/7-decision-guide/en.md
+          - docs/6-github-actions-as-monitor/en.md
 
       - id: probe-status-page-or-app
         question:
@@ -74,7 +74,7 @@ data:
           cn: "监控的状态页。探应用 URL 等于 GH cron 只是主要监控的副本。探监控的状态页 URL 才是抓\"主要监控本身坏了\"的情况 —— 这才是第二层的意义。"
         confidence: 9
         reference:
-          - docs/7-decision-guide/7-decision-guide.en.md
+          - docs/7-decision-guide/en.md
 
   - name:
       en: "costs"
@@ -89,4 +89,4 @@ data:
           cn: "Uptime Kuma 自托管 —— 软件免费,跑在 Docker 容器里,自带状态页。成本是跑它的那台机器(~$5/mo VPS)。UptimeRobot 免费档含一个状态页,但带 UptimeRobot 品牌;Better Stack 的打磨版状态页 $25/mo 起。"
         confidence: 9
         reference:
-          - docs/7-decision-guide/7-decision-guide.en.md
+          - docs/7-decision-guide/en.md

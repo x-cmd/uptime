@@ -75,7 +75,7 @@
 <!-- END data/api-type.snapshot.md -->
 
 For a worked example of parsing each `api_type`, see
-[`docs/2-the-catalog/2-the-catalog.en.md`](./docs/2-the-catalog/2-the-catalog.en.md#3-the-api_type-taxonomy).
+[`docs/2-the-catalog/en.md`](./docs/2-the-catalog/en.md#3-the-api_type-taxonomy).
 
 ## Regional coverage
 
@@ -189,7 +189,7 @@ future live pipeline will probe.
 
 ### What's the difference between `atlassian-statuspage`, `custom-json`, `statuspal`, and `rss`?
 
-These are the four `api_type` values in the catalog. `atlassian-statuspage` is the most common (Statuspage.io / Atlassian Statuspage). `custom-json` is for vendors with a bespoke endpoint. `statuspal` is the [Statuspal](https://statuspal.com) shape. `rss` is for vendors that publish only a feed. See [`docs/2-the-catalog`](./docs/2-the-catalog/2-the-catalog.en.md#3-the-api_type-taxonomy).
+These are the four `api_type` values in the catalog. `atlassian-statuspage` is the most common (Statuspage.io / Atlassian Statuspage). `custom-json` is for vendors with a bespoke endpoint. `statuspal` is the [Statuspal](https://statuspal.com) shape. `rss` is for vendors that publish only a feed. See [`docs/2-the-catalog`](./docs/2-the-catalog/en.md#3-the-api_type-taxonomy).
 
 ### What's `region` for?
 
@@ -197,4 +197,4 @@ It tags providers as `cn` (mainland China) or `global`. The future live panel at
 
 ### Where are the topic articles?
 
-Under [`docs/`](./docs). The first article (`1-uptime-content`) is the overview; `2-the-catalog` dives into the data; `3-` to `6-` cover self-hosted, hosted, cron-style, and GitHub Actions monitors; `7-decision-guide` is the synthesis. Each article is a 4-tuple: `*.en.md`, `*.cn.md`, `*.llms.md`, `*.faq.yml`.
+Under [`docs/`](./docs). The first article (`1-uptime-content`) is the overview; `2-the-catalog` dives into the data; `3-` to `6-` cover self-hosted, hosted, cron-style, and GitHub Actions monitors; `7-decision-guide` is the synthesis. Each article is a 4-tuple: `en.md`, `cn.md`, `llms.md`, `faq.yml` (the slot name is carried by the folder, not the files inside).

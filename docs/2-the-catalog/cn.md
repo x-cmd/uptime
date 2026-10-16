@@ -15,7 +15,7 @@ x-json-ld:
 # `x-cmd/uptime` 目录
 
 > **本文内容。** 第一篇文章
-> ([`1-uptime-content`](../1-uptime-content/1-uptime-content.cn.md))
+> ([`1-uptime-content`](../1-uptime-content/cn.md))
 > 给出了整体视图。本文深入目录本身 —— 每个字段、每种查询模式、每个
 > 贡献开关。
 

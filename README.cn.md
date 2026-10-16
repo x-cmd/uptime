@@ -77,7 +77,7 @@ _(Phase A:静态快照。后续阶段会由 CI 脚本从 `data/index.tsv` 自动
 <!-- END data/api-type.snapshot.md -->
 
 每种 `api_type` 的解析示例见
-[`docs/2-the-catalog/2-the-catalog.cn.md`](./docs/2-the-catalog/2-the-catalog.cn.md#3-api_type-分类法)。
+[`docs/2-the-catalog/cn.md`](./docs/2-the-catalog/cn.md#3-api_type-分类法)。
 
 ## 区域覆盖
 
@@ -185,7 +185,7 @@ curl -fsSL https://raw.githubusercontent.com/x-cmd/uptime/main/data/index.tsv \
 
 ### `atlassian-statuspage` / `custom-json` / `statuspal` / `rss` 有什么区别?
 
-这是目录里的四种 `api_type` 值。`atlassian-statuspage` 最常见(Statuspage.io / Atlassian Statuspage)。`custom-json` 给有自定义接口的厂商。`statuspal` 是 [Statuspal](https://statuspal.com) 的形态。`rss` 是只发 feed 的厂商。见 [`docs/2-the-catalog`](./docs/2-the-catalog/2-the-catalog.cn.md#3-api_type-分类法)。
+这是目录里的四种 `api_type` 值。`atlassian-statuspage` 最常见(Statuspage.io / Atlassian Statuspage)。`custom-json` 给有自定义接口的厂商。`statuspal` 是 [Statuspal](https://statuspal.com) 的形态。`rss` 是只发 feed 的厂商。见 [`docs/2-the-catalog`](./docs/2-the-catalog/cn.md#3-api_type-分类法)。
 
 ### `region` 是干嘛的?
 
@@ -193,4 +193,4 @@ curl -fsSL https://raw.githubusercontent.com/x-cmd/uptime/main/data/index.tsv \
 
 ### topic 文章在哪?
 
-[`docs/`](./docs) 下。第一篇 `1-uptime-content` 是概览;`2-the-catalog` 深入目录;`3-` 到 `6-` 分别讲自托管、托管、cron 风格、GitHub Actions 监控;`7-decision-guide` 是综合。每篇是 4 元组:`*.en.md`、`*.cn.md`、`*.llms.md`、`*.faq.yml`。
+[`docs/`](./docs) 下。第一篇 `1-uptime-content` 是概览;`2-the-catalog` 深入目录;`3-` 到 `6-` 分别讲自托管、托管、cron 风格、GitHub Actions 监控;`7-decision-guide` 是综合。每篇是 4 元组:`en.md`、`cn.md`、`llms.md`、`faq.yml`(slot 名由文件夹承担,文件内不重复)。

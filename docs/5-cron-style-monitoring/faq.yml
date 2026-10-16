@@ -14,7 +14,7 @@ data:
           cn: "HTTP 监控去 ping 目标,问\"它在响应吗?\"。cron 风格监控翻转关系:任务 ping 监控,问\"我跑了吗?\"。cron 风格能抓三个 HTTP 抓不到的故障:任务根本没跑、开了但没跑完、跑完但失败。"
         confidence: 9
         reference:
-          - docs/5-cron-style-monitoring/5-cron-style-monitoring.en.md
+          - docs/5-cron-style-monitoring/en.md
 
       - id: ping-model-endpoints
         question:
@@ -25,7 +25,7 @@ data:
           cn: "每个 check 三个端点:`/start`(任务开始)、/`(任务成功)、`/fail`(任务失败)。每个 check 在 URL 里有一个 UUID。监控在配置的周期 + grace 内没有收到 `/` ping 就告警。"
         confidence: 9
         reference:
-          - docs/5-cron-style-monitoring/5-cron-style-monitoring.en.md
+          - docs/5-cron-style-monitoring/en.md
 
   - name:
       en: "Healthchecks.io"
@@ -40,7 +40,7 @@ data:
           cn: "开源项目:20 个 check,任意间隔,也包含 OSS 自托管选项(自己的 Postgres)。非开源项目免费档更小,check 数有限。"
         confidence: 9
         reference:
-          - docs/5-cron-style-monitoring/5-cron-style-monitoring.en.md
+          - docs/5-cron-style-monitoring/en.md
 
       - id: healthchecks-self-host
         question:
@@ -51,7 +51,7 @@ data:
           cn: "可以 —— 后端是开源的,https://github.com/healthchecks/healthchecks 。跑在 Postgres 加一个小 Python/Django 应用上。自托管是把监控元数据留在本地的正确做法;没部署过的话,几小时能起来。"
         confidence: 9
         reference:
-          - docs/5-cron-style-monitoring/5-cron-style-monitoring.en.md
+          - docs/5-cron-style-monitoring/en.md
 
   - name:
       en: "Cronitor"
@@ -66,7 +66,7 @@ data:
           cn: "Schedule 解析(定义时就检测\"Feb 30\"这类不可能的 cron 表达式)、运行指标(任务比上周跑得快/慢?日志输出形态变了?)、更丰富的 telemetry 集成(Kubernetes CronJob、ECS、Airflow)。有一批 cron 条目时选 Cronitor;几个就 Healthchecks.io 更简单。"
         confidence: 9
         reference:
-          - docs/5-cron-style-monitoring/5-cron-style-monitoring.en.md
+          - docs/5-cron-style-monitoring/en.md
 
   - name:
       en: "Dead Man's Snitch"
@@ -81,7 +81,7 @@ data:
           cn: "2023 年被 Sentry 收购。现在作为 Sentry Cron Monitoring 产品的一部分交付。如果你是 Sentry 客户,你可能已经开了 Cron Monitoring —— 同样的 ping 模型,与 Sentry issue 集成。"
         confidence: 9
         reference:
-          - docs/5-cron-style-monitoring/5-cron-style-monitoring.en.md
+          - docs/5-cron-style-monitoring/en.md
 
       - id: when-pick-dms
         question:
@@ -92,7 +92,7 @@ data:
           cn: "已经在用 Sentry,想让 cron 告警和应用错误走同一条事故流水线。不在 Sentry 上、想要专门的 cron 监控供应商,Healthchecks.io 更显然。"
         confidence: 9
         reference:
-          - docs/5-cron-style-monitoring/5-cron-style-monitoring.en.md
+          - docs/5-cron-style-monitoring/en.md
 
   - name:
       en: "misuses"
@@ -107,4 +107,4 @@ data:
           cn: "不行。cron 监控接受外部 ping 就当\"ping 到了\" —— 但它没法告诉你端点是不是真的响应了。HTTP 探测用 UptimeRobot / Uptime Kuma / Prometheus + blackbox_exporter。cron 风格只用于\"我的定时任务跑了没?\"。"
         confidence: 9
         reference:
-          - docs/5-cron-style-monitoring/5-cron-style-monitoring.en.md
+          - docs/5-cron-style-monitoring/en.md

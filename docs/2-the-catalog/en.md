@@ -15,7 +15,7 @@ x-json-ld:
 # The `x-cmd/uptime` catalog
 
 > **What this article covers.** The first article
-> ([`1-uptime-content`](../1-uptime-content/1-uptime-content.en.md))
+> ([`1-uptime-content`](../1-uptime-content/en.md))
 > gave the high-level picture. This one dives into the catalog itself —
 > every field, every query pattern, every contribution knob.
 

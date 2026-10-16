@@ -14,7 +14,7 @@ data:
           cn: "`docker run -d --name uptime-kuma --restart=always -p 3001:3001 -v uptime-kuma:/app/data louislam/uptime-kuma:1`。Web UI 在 3001 端口。SQLite 在命名卷里,重启不丢。Pin 到 `:1` —— 2.x 重写 2026 年底仍在进行。"
         confidence: 9
         reference:
-          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md
+          - docs/3-self-hosted-monitors/en.md
 
       - id: kuma-alert-channels
         question:
@@ -25,7 +25,7 @@ data:
           cn: "约 90 个(2026 年),Telegram、Slack、Discord、邮件、经 Twilio 的短信、ntfy、Gotify、Pushover 等。通道在 UI 里按 monitor 配置。"
         confidence: 8
         reference:
-          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md
+          - docs/3-self-hosted-monitors/en.md
 
       - id: kuma-ha
         question:
@@ -36,7 +36,7 @@ data:
           cn: "默认是单实例 + SQLite。要 HA:要么两个实例放负载均衡后 + 共享外部 Postgres(1.x),要么用文档化的 Postgres 后端。SQLite 对单节点够用,横向扩展前换掉。"
         confidence: 8
         reference:
-          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md
+          - docs/3-self-hosted-monitors/en.md
 
   - name:
       en: "Beszel"
@@ -51,7 +51,7 @@ data:
           cn: "Beszel 的强项是通过 agent 做每主机资源监控(CPU、内存、磁盘、网络)。当 fleet 资源监控比 HTTP 探测深度更重要时选 Beszel。常见组合是 Beszel 盯 fleet + Uptime Kuma 盯服务 uptime,跑在同一台机器上。"
         confidence: 9
         reference:
-          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md
+          - docs/3-self-hosted-monitors/en.md
 
       - id: beszel-agent-port
         question:
@@ -62,7 +62,7 @@ data:
           cn: "默认端口 45876,agent 通过 host 网络和 hub 通信。只在受信侧暴露 —— agent 永远不应该从公网可达。"
         confidence: 9
         reference:
-          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md
+          - docs/3-self-hosted-monitors/en.md
 
   - name:
       en: "Prometheus + blackbox"
@@ -77,7 +77,7 @@ data:
           cn: "当你已经在跑 Prometheus(以及 Alertmanager 和 Grafana)。在那个环境里加 HTTP 探测就是一段 scrape 配置 + 一条告警规则。脱离现有 Prometheus,运维负担就太重 —— Uptime Kuma 上线更快。"
         confidence: 9
         reference:
-          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md
+          - docs/3-self-hosted-monitors/en.md
 
       - id: blackbox-probe-modules
         question:
@@ -88,7 +88,7 @@ data:
           cn: "常见的有:`http_2xx`、`http_post_2xx`、`tcp_connect`、`icmp`、`dns`、`ssh_banner`。module 配置在 `blackbox.yml` 里。Prometheus 在 scrape job 的 `params.module` 里按名字引用。"
         confidence: 8
         reference:
-          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md
+          - docs/3-self-hosted-monitors/en.md
 
   - name:
       en: "decision"
@@ -103,7 +103,7 @@ data:
           cn: "没有特殊理由就先用 Uptime Kuma。它 HTTP 检查最丰富、告警通道最多、内置状态页,都在一个 UI 里。后面 fleet 资源监控变重要再加 Beszel。只有 Prometheus 已经在你的栈里时,才采纳 Prometheus + blackbox。"
         confidence: 9
         reference:
-          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md
+          - docs/3-self-hosted-monitors/en.md
 
       - id: monitor-the-monitor
         question:
@@ -114,4 +114,4 @@ data:
           cn: "配一个独立的第二层 —— 通常是 GitHub Actions cron workflow 去探测监控的 UI 或状态页。自托管监控如果本身不被监控,就是一个单点故障。见 `6-github-actions-as-monitor`。"
         confidence: 9
         reference:
-          - docs/3-self-hosted-monitors/3-self-hosted-monitors.en.md
+          - docs/3-self-hosted-monitors/en.md

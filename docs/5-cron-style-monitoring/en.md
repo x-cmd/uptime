@@ -15,7 +15,7 @@ x-json-ld:
 # Cron-style heartbeat monitoring
 
 > **What this article covers.** The first article
-> ([`1-uptime-content`](../1-uptime-content/1-uptime-content.en.md))
+> ([`1-uptime-content`](../1-uptime-content/en.md))
 > mentioned cron-style monitors briefly. This one dives in: when
 > "did the job run?" is the right question (and HTTP probes are
 > the wrong tool), the three vendors that matter in 2026 —
@@ -170,8 +170,8 @@ application errors.
 Common misuses:
 
 - **Probing an HTTP endpoint.** That's an HTTP monitor's job; see
-  [`3-self-hosted-monitors`](../3-self-hosted-monitors/3-self-hosted-monitors.en.md)
-  or [`4-hosted-monitors`](../4-hosted-monitors/4-hosted-monitors.en.md).
+  [`3-self-hosted-monitors`](../3-self-hosted-monitors/en.md)
+  or [`4-hosted-monitors`](../4-hosted-monitors/en.md).
   Healthchecks.io will accept an external ping and treat it as
   a "ping arrived" success — but it can't tell you whether the
   endpoint is actually responding.
@@ -189,10 +189,10 @@ answer.
 
 ## Related resources
 
-- [`1-uptime-content`](../1-uptime-content/1-uptime-content.en.md) — overview
-- [`3-self-hosted-monitors`](../3-self-hosted-monitors/3-self-hosted-monitors.en.md) — HTTP probes, self-hosted
-- [`4-hosted-monitors`](../4-hosted-monitors/4-hosted-monitors.en.md) — HTTP probes, hosted
-- [`7-decision-guide`](../7-decision-guide/7-decision-guide.en.md) — pick by scenario
+- [`1-uptime-content`](../1-uptime-content/en.md) — overview
+- [`3-self-hosted-monitors`](../3-self-hosted-monitors/en.md) — HTTP probes, self-hosted
+- [`4-hosted-monitors`](../4-hosted-monitors/en.md) — HTTP probes, hosted
+- [`7-decision-guide`](../7-decision-guide/en.md) — pick by scenario
 - [Healthchecks.io](https://healthchecks.io/) on the web
 - [Healthchecks self-host repo](https://github.com/healthchecks/healthchecks) on GitHub
 

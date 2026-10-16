@@ -15,7 +15,7 @@ x-json-ld:
 # Cron 风格心跳监控
 
 > **本文内容。** 第一篇文章
-> ([`1-uptime-content`](../1-uptime-content/1-uptime-content.cn.md))
+> ([`1-uptime-content`](../1-uptime-content/cn.md))
 > 只顺带提了 cron 风格监控。本文深入:什么时候"任务有没有跑?"才是
 > 正确问题(以及 HTTP 探测是错的工具),以及 2026 年用得上的三家
 > —— **Healthchecks.io**、**Cronitor**、**Dead Man's Snitch** ——
@@ -150,8 +150,8 @@ cron 告警和应用错误走同一条事故流水线的场景。
 常见误用:
 
 - **探测 HTTP 端点。** 这是 HTTP 监控的活儿;见
-  [`3-self-hosted-monitors`](../3-self-hosted-monitors/3-self-hosted-monitors.cn.md)
-  或 [`4-hosted-monitors`](../4-hosted-monitors/4-hosted-monitors.cn.md)。
+  [`3-self-hosted-monitors`](../3-self-hosted-monitors/cn.md)
+  或 [`4-hosted-monitors`](../4-hosted-monitors/cn.md)。
   Healthchecks.io 会接受外部 ping 当作"ping 到了" —— 但它没法告诉
   你端点是不是真的在响应。
 - **代替你的应用健康检查。** Kuma / UptimeRobot 探的 `/healthz`
@@ -164,10 +164,10 @@ cron 告警和应用错误走同一条事故流水线的场景。
 
 ## 相关资源
 
-- [`1-uptime-content`](../1-uptime-content/1-uptime-content.cn.md) —— 概览
-- [`3-self-hosted-monitors`](../3-self-hosted-monitors/3-self-hosted-monitors.cn.md) —— HTTP 探测,自托管
-- [`4-hosted-monitors`](../4-hosted-monitors/4-hosted-monitors.cn.md) —— HTTP 探测,托管
-- [`7-decision-guide`](../7-decision-guide/7-decision-guide.cn.md) —— 按场景选
+- [`1-uptime-content`](../1-uptime-content/cn.md) —— 概览
+- [`3-self-hosted-monitors`](../3-self-hosted-monitors/cn.md) —— HTTP 探测,自托管
+- [`4-hosted-monitors`](../4-hosted-monitors/cn.md) —— HTTP 探测,托管
+- [`7-decision-guide`](../7-decision-guide/cn.md) —— 按场景选
 - [Healthchecks.io](https://healthchecks.io/) 官网
 - [Healthchecks 自托管仓库](https://github.com/healthchecks/healthchecks) GitHub
 

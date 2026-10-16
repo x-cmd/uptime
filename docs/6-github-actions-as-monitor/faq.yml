@@ -15,7 +15,7 @@ data:
         confidence: 9
         reference:
           - https://docs.github.com/actions/using-workflows/events-that-trigger-workflows#schedule
-          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md
+          - docs/6-github-actions-as-monitor/en.md
 
       - id: offset-minutes
         question:
@@ -26,7 +26,7 @@ data:
           cn: "`*/5` 在 :00、:05、:10、……触发 —— 所有 cron 作者都用它。在整点分钟上形成扎堆效应,GitHub 调度器短暂过载。挑非整点分钟让你的 workflow 跑在全网前面,改善触发时序。"
         confidence: 9
         reference:
-          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md
+          - docs/6-github-actions-as-monitor/en.md
 
   - name:
       en: "recipes"
@@ -41,7 +41,7 @@ data:
           cn: "三种缓解:(1) 先用 `gh issue list --label uptime --state open` 查有没有开着的,(2) 用 workflow artifact 记上次失败时间戳,只 N 小时后才开新 issue,(3) 按故障特征聚合(连续探测都 504 → 一个 issue 加 comment)。"
         confidence: 9
         reference:
-          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md
+          - docs/6-github-actions-as-monitor/en.md
 
       - id: csv-status-badge
         question:
@@ -52,7 +52,7 @@ data:
           cn: "每次探测跑都往仓库的 `uptime-history.csv` 追加一行(时间戳、状态码)。为避免 `*/5 * * * *` 每天 288 次 commit,加一个每天 `0 0 * * *` 的 squash workflow 把行聚合成单次日 commit。徽章生成器两种格式都能读。"
         confidence: 9
         reference:
-          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md
+          - docs/6-github-actions-as-monitor/en.md
 
   - name:
       en: "limits"
@@ -68,7 +68,7 @@ data:
         confidence: 9
         reference:
           - https://docs.github.com/billing/managing-billing-for-github-actions/about-billing-for-github-actions
-          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md
+          - docs/6-github-actions-as-monitor/en.md
 
       - id: cron-sweet-spot-private
         question:
@@ -79,7 +79,7 @@ data:
           cn: "`*/15 * * * *` 是甜蜜点:4 次/小时,~2,880 次/月,远低于 500 分钟免费档。最坏检测窗口是文档化的;要亚 15 分钟 SLA 就搭配主要监控。"
         confidence: 9
         reference:
-          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md
+          - docs/6-github-actions-as-monitor/en.md
 
   - name:
       en: "security"
@@ -95,7 +95,7 @@ data:
         confidence: 9
         reference:
           - https://docs.github.com/actions/security-guides/security-harden-deployments/using-ip-allow-lists-with-github-hosted-runners
-          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md
+          - docs/6-github-actions-as-monitor/en.md
 
       - id: never-echo-secrets
         question:
@@ -106,4 +106,4 @@ data:
           cn: "永远不行。任何有仓库读权限的人都能看 workflow 日志,GitHub 的 secret scanning 会告警(并可能自动撤销)泄露的 token。如果 secret 必须出现在值里,用 `::add-mask::`,但更安全的路径是在定义时遮罩,用 `${{ secrets.NAME }}` 而不 echo。"
         confidence: 9
         reference:
-          - docs/6-github-actions-as-monitor/6-github-actions-as-monitor.en.md
+          - docs/6-github-actions-as-monitor/en.md

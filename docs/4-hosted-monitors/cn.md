@@ -15,7 +15,7 @@ x-json-ld:
 # 托管 uptime 监控
 
 > **本文内容。** 第一篇文章
-> ([`1-uptime-content`](../1-uptime-content/1-uptime-content.cn.md))
+> ([`1-uptime-content`](../1-uptime-content/cn.md))
 > 只顺带提了托管监控。本文深入 2026 年真正用得上的四个 —— **UptimeRobot**、
 > **Better Stack**、**Better Uptime**、**Hyperping** —— 各家擅长什么、
 > 价格多少、以及"花钱让别人做"什么时候胜过自己跑容器。
@@ -23,7 +23,7 @@ x-json-ld:
 不想运维任何基础设施时,托管监控就是正确答案:别人家的机器去探测
 你的端点,出问题就打电话。代价 —— 自托管工具没有 —— 是**当你和托管
 监控厂商的账户本身出问题(或欠费宽限期过了),你的监控也停了**。
-建议的缓解在 [`6-github-actions-as-monitor`](../6-github-actions-as-monitor/6-github-actions-as-monitor.cn.md)。
+建议的缓解在 [`6-github-actions-as-monitor`](../6-github-actions-as-monitor/cn.md)。
 
 ## 1. UptimeRobot —— 默认免费选项
 
@@ -153,11 +153,11 @@ CPU + 内存 + 你的时间;Better Stack / Better Uptime 付费档 $25/mo
 
 ## 相关资源
 
-- [`1-uptime-content`](../1-uptime-content/1-uptime-content.cn.md) —— 概览
-- [`3-self-hosted-monitors`](../3-self-hosted-monitors/3-self-hosted-monitors.cn.md) —— 想自托管时的替代
-- [`5-cron-style-monitoring`](../5-cron-style-monitoring/5-cron-style-monitoring.cn.md) —— cron 任务而非 HTTP 端点
-- [`6-github-actions-as-monitor`](../6-github-actions-as-monitor/6-github-actions-as-monitor.cn.md) —— 独立第二层
-- [`7-decision-guide`](../7-decision-guide/7-decision-guide.cn.md) —— 按场景选择
+- [`1-uptime-content`](../1-uptime-content/cn.md) —— 概览
+- [`3-self-hosted-monitors`](../3-self-hosted-monitors/cn.md) —— 想自托管时的替代
+- [`5-cron-style-monitoring`](../5-cron-style-monitoring/cn.md) —— cron 任务而非 HTTP 端点
+- [`6-github-actions-as-monitor`](../6-github-actions-as-monitor/cn.md) —— 独立第二层
+- [`7-decision-guide`](../7-decision-guide/cn.md) —— 按场景选择
 
 ## 许可
 
